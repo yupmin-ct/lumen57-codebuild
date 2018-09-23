@@ -6,7 +6,7 @@ phases:
       export DEBIAN_FRONTEND=noninteractive
       export ENV COMPOSER_ALLOW_SUPERUSER 1
 
-      #Install php7.2
+      # Install php7.2
       apt-get update --fix-missing && \
       apt-get install -y --no-install-recommends apt-utils gnupg && \
       apt-get -y install locales locales-all unzip vim cron procps && \
@@ -26,15 +26,12 @@ phases:
       # Install PHP
       apt-get -y install php7.2-fpm php7.2-curl php7.2-mbstring php7.2-intl php7.2-bcmath php7.2-xmlrpc php7.2-xml php7.2-zip php7.2-mysql
 
-#      #Enable xdebug - phpunit uses this for code coverage
-#      phpenmod xdebug
-
-      #Install composer
+      # Install composer
       curl -sS https://getcomposer.org/installer | php -- && \
       php composer.phar config -g repos.packagist composer https://packagist.jp && \
       php composer.phar global require hirak/prestissimo
 
-      #Various handy node based dev tools - do you need these during your build? Comment if not.
+      # Various handy node based dev tools - do you need these during your build? Comment if not.
       # npm install -g yarn
       # yarn install
 
