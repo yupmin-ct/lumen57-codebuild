@@ -39,7 +39,7 @@ phases:
     commands:
     - echo Build started on `date`
     - echo Installing composer deps
-    - composer install --no-progress --no-suggest
+    - php composer.phar install --no-progress --no-suggest
 
   post_build:
     commands:
