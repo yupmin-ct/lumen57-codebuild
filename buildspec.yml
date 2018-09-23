@@ -4,7 +4,7 @@ phases:
     commands:
     - |
       export DEBIAN_FRONTEND=noninteractive
-      export ENV COMPOSER_ALLOW_SUPERUSER 1
+      export COMPOSER_ALLOW_SUPERUSER=1
 
       # Install php7.2
       apt-get update --fix-missing && \
