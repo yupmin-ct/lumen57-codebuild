@@ -3,28 +3,25 @@ phases:
   install:
     commands:
     - |
-        export DEBIAN_FRONTEND=noninteractive
+        export DEBIAN_FRONTEND=noninteractive && \
         export COMPOSER_ALLOW_SUPERUSER=1
 
-        # Install php7.2
         apt-get update --fix-missing && \
         apt-get install -y --no-install-recommends apt-utils gnupg && \
-        apt-get -y install locales locales-all unzip vim cron procps && \
         locale-gen en_US.UTF-8 && \
         update-locale
 
-        export LANG=en_US.UTF-8
-        export LANGUAGE=en_US:en
-        export LC_ALL=en_US.UTF-8
+        export LANG=en_US.UTF-8 && \
+        export LANGUAGE=en_US:en && \
+        export LC_ALL=en_US.UTF-8 && \
+        dpkg-reconfigure locales
 
-        apt-get install -y --no-install-recommends apt-transport-https lsb-release ca-certificates wget && \
-        wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg && \
-        echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list && \
+        add-apt-repository -y ppa:ondrej/php
         apt-get update && \
         apt-get -y upgrade
 
         # Install PHP
-        apt-get -y install php7.2-fpm php7.2-curl php7.2-mbstring php7.2-intl php7.2-bcmath php7.2-xmlrpc php7.2-xml php7.2-zip php7.2-mysql
+        apt-get -y install php7.2-cli php7.2-curl php7.2-mbstring php7.2-intl php7.2-bcmath php7.2-xmlrpc php7.2-xml php7.2-zip php-xdebug
 
         # Install composer
         curl -sS https://getcomposer.org/installer | php -- && \
