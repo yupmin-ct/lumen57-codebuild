@@ -30,6 +30,7 @@ phases:
 
   pre_build:
     commands:
+    - bash -c "$(curl -fsSL https://raw.githubusercontent.com/thii/aws-codebuild-extras/master/install)"
     - echo Logging in to Amazon ECR...
     - $(aws ecr get-login --no-include-email --region $AWS_DEFAULT_REGION)
 
